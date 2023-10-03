@@ -51,6 +51,7 @@ public class PropertyInformationService {
             propertyInformationFromDB.setDescription(propertyInformation.getDescription());
             propertyInformationFromDB.setType(propertyInformation.getType());
             propertyInformationFromDB.setCoverImage(propertyInformation.getCoverImage());
+            return propertyInformationRepository.save(propertyInformationFromDB);
         }
         return null;
     }
