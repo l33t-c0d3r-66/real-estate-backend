@@ -23,13 +23,17 @@ public class UserInformationService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserInformation> userInformationOptional = userInformationRepository.findByName(username);
+        Optional<UserInformation> userInformationOptional = userInformationRepository.findByEmail(username);
         return userInformationOptional.map(UserInformationDetail::new).orElseThrow(() -> new UsernameNotFoundException("User doesn't exist with user id"+username));
     }
 
-    public String addUser(UserInformation userInformation) {
-        userInformation.setPassword(encoder.encode(userInformation.getPassword()));
-        userInformationRepository.save(userInformation);
-        return "User Added Successfully";
+    public UserInformation addUser(UserInformation userInformation) {
+        Optional<UserInformation> optionalUserInformation = userInformationRepository.findByEmail(userInformation.getEmail());
+        if (!optionalUserInformation.isPresent()) {
+            userInformation.setPassword(encoder.encode(userInformation.getPassword()));
+            return userInformationRepository.save(userInformation);
+
+        }
+        return null;
     }
 }

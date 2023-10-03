@@ -1,7 +1,6 @@
 package com.real.estate.backend.config;
 
 import com.real.estate.backend.security.filter.JWTAuthFilter;
-import com.real.estate.backend.security.model.UserInformationDetail;
 import com.real.estate.backend.service.UserInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -56,7 +55,7 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.authorizeHttpRequests()
+        return httpSecurity.csrf().disable().authorizeHttpRequests()
                 .requestMatchers("/api/public/**").permitAll()
                 .and().authorizeHttpRequests().requestMatchers("/api/v1/**")
                 .authenticated().and().sessionManagement()
