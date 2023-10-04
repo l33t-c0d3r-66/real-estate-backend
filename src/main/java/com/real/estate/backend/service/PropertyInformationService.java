@@ -34,7 +34,7 @@ public class PropertyInformationService {
         return null;
     }
 
-    public boolean deletePropertyById(Long id) {
+    public Boolean deletePropertyById(Long id) {
         Optional<PropertyInformation> propertyInformation = propertyInformationRepository.findById(id);
         if(propertyInformation.isPresent()) {
             propertyInformationRepository.deleteById(id);
@@ -43,8 +43,8 @@ public class PropertyInformationService {
         return false;
     }
 
-    public PropertyInformation updatePropertyInformation(PropertyInformation propertyInformation){
-        Optional<PropertyInformation> propertyInformationOptional = propertyInformationRepository.findById(propertyInformation.getId());
+    public PropertyInformation updatePropertyInformation(Long id, PropertyInformation propertyInformation){
+        Optional<PropertyInformation> propertyInformationOptional = propertyInformationRepository.findById(id);
         if(propertyInformationOptional.isPresent()) {
             PropertyInformation propertyInformationFromDB = propertyInformationOptional.get();
             propertyInformationFromDB.setTitle(propertyInformation.getTitle());
