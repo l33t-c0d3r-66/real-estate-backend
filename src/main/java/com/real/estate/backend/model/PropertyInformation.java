@@ -19,6 +19,7 @@ public class PropertyInformation {
     private Long id;
     private String type;
     private String title;
+    private Integer price;
     private String description;
     private Integer numberOfBedRooms;
     private Integer numberOfBathrooms;
