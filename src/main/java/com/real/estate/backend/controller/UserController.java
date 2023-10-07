@@ -52,4 +52,11 @@ public class UserController {
         }
         return response;
     }
+
+    @PostMapping(value="/api/v1/validate/{token}")
+    public HashMap<String, Object> validateToken(@PathVariable("token") String token) {
+        HashMap<String, Object> response = new HashMap<>();
+        response.put("token", token);
+        return response;
+    }
 }
