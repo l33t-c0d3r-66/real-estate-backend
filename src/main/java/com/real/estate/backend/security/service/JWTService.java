@@ -38,8 +38,13 @@ public class JWTService {
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
-        final String username = extractUserName(token);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+        String username = null;
+        try {
+            username = extractUserName(token);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return (username != null && username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
     private String createToken(Map<String, Object> claims, String username) {

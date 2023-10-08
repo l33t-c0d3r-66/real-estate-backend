@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 @Component
 public class JWTAuthFilter extends OncePerRequestFilter {
@@ -45,7 +46,11 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
             if(authorizationHeader != null && authorizationHeader.startsWith("Bearer")) {
                 token = authorizationHeader.substring(7);
-                username = jwtService.extractUserName(token);
+                try {
+                    username = jwtService.extractUserName(token);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
             }
 
 
