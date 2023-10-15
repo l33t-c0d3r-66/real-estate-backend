@@ -1,10 +1,10 @@
 # Real Estate Backend
 <li> Backend for Real Estate Portfolio Website </li>
 <li> This Project is the Back End for a Real Estate Portfolio Application designed in ReactJS </li>
-<li> This Project is created using Spring Boot, Spring Web, and H2 Database.
+<li> This Project is created using Spring Boot, Spring Web, and Spring Security
 <li> This Project is divided into two types of API</li> 
-1. Public API (Publicly accessible)
-2. Private API (Need Token for Request)
+<li> 1. Public API (Publicly accessible) </li>
+<li> 2. Private API (Need Token for Request) </li>
 <br>
 
 
